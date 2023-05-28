@@ -1,0 +1,5 @@
+---
+bumps:
+  - file: playbook.yml
+    regex:
+      - pattern: "tests_container: ghcr.io/szyminson/ctr-tools-test:$VERSION"
