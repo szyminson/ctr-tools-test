@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--Phoronix Test Suite v10.8.3-->
+<PhoronixTestSuite>
+  <SuiteInformation>
+    <Title>Containerization tools testing</Title>
+    <Version>1.0.0</Version>
+    <TestType>System</TestType>
+    <Description>Test suite for analysis and comparison of containerization tools</Description>
+    <Maintainer>szyminson</Maintainer>
+  </SuiteInformation>
+  <Execute>
+    <Test>pts/sysbench</Test>
+    <Arguments>cpu run</Arguments>
+    <Description>Test: CPU</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/sysbench</Test>
+    <Arguments>memory run</Arguments>
+    <Description>Test: RAM / Memory</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/sockperf</Test>
+    <Arguments>under-load</Arguments>
+    <Description>Test: Latency Under Load</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/sockperf</Test>
+    <Arguments>ping-pong</Arguments>
+    <Description>Test: Latency Ping Pong</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/sockperf</Test>
+    <Arguments>throughput</Arguments>
+    <Description>Test: Throughput</Description>
+  </Execute>
+</PhoronixTestSuite>
