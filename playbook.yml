@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    - tests_container: ghcr.io/szyminson/ctr-tools-test:latest
+    - tests_container: ghcr.io/szyminson/ctr-tools-test:v0.3.0
     - docker_result_dir: /tmp/docker-results
     - podman_result_dir: /tmp/podman-results
   tasks:
