@@ -7,11 +7,11 @@ RUN /phoronix-test-suite/phoronix-test-suite install pts/sysbench pts/sockperf
 
 COPY ./phoronix-test-suite.xml /etc
 
-RUN mkdir -p /var/ctr-tools-test
+RUN mkdir -p /var/ctr-tools-test/results
 COPY ./run-tests.sh /var/ctr-tools-test
 
 RUN mkdir -p /var/lib/phoronix-test-suite/test-suites/local/containerization-tools-testing
 COPY ./suite-definition.xml /var/lib/phoronix-test-suite/test-suites/local/ctr-tools-test
 
 
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "echo", "'test'" ]
