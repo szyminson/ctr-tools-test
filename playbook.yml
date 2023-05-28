@@ -85,7 +85,6 @@
         detach: false
         volumes:
           - "{{ podman_result_dir }}:/var/ctr-tools-test/results"
-        command: ["-c", "echo 'test' > /var/ctr-tools-test/results/latest.json"]
       when: podman_installed.rc == 0
       tags:
         - podman
