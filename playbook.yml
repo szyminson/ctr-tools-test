@@ -1,0 +1,78 @@
+---
+- hosts: all
+  tasks:
+    - name: Create result dirs
+      ansible.builtin.file:
+        path: "/tmp/{{ item }}-results"
+        state: directory
+      loop:
+        - docker
+        - podman
+      tags:
+        - docker
+        - podman
+        - tests
+
+    - name: Check if Docker is installed
+      ansible.builtin.command: docker --version
+      register: docker_installed
+      ignore_errors: true
+      tags:
+        - docker
+        - tests
+        - results
+
+    - name: Run Docker test
+      community.docker.docker_container:
+        name: ctr-tools-test
+        image: ghcr.io/szyminson/ctr-tools-test:latest
+        detach: false
+        volumes:
+          - /tmp/docker-results:/var/ctr-tools-test/results
+      when: docker_installed.rc == 0
+      tags:
+        - docker
+        - tests
+    
+    - name: Get Docker results
+      ansible.builtin.fetch:
+        src: /tmp/docker-results/latest.json
+        dest: ./results
+      when: docker_installed.rc == 0
+      tags:
+        - docker
+        - results
+
+    - name: Check if Podman is installed
+      ansible.builtin.command: podman --version
+      register: podman_installed
+      ignore_errors: true
+      tags:
+        - podman
+        - tests
+        - results
+
+    - name: Run Podman test
+      containers.podman.podman_container:
+        name: ctr-tools-test
+        image: ghcr.io/szyminson/ctr-tools-test:latest
+        detach: false
+        volumes:
+          - /tmp/podman-results:/var/ctr-tools-test/results
+      when: podman_installed.rc == 0
+      tags:
+        - podman
+        - tests
+    
+    - name: Get Podman results
+      ansible.builtin.fetch:
+        src: /tmp/podman-results/latest.json
+        dest: ./results
+      when: podman_installed.rc == 0
+      tags:
+        - podman
+        - results
+
+  
+
+
