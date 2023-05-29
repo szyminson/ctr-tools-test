@@ -2,6 +2,7 @@
 - hosts: all
   vars:
     - tests_container: ghcr.io/szyminson/ctr-tools-test:v0.3.0
+    - in_container_result_dir: /var/ctr-tools-test/results
     - docker_result_dir: /tmp/docker-results
     - podman_result_dir: /tmp/podman-results
   tasks:
@@ -26,6 +27,7 @@
     - name: Docker pull test container image
       community.docker.docker_image:
         name: "{{ tests_container }}"
+        source: pull
       when: docker_installed.rc == 0
       tags:
         - docker
@@ -37,7 +39,7 @@
         image: "{{ tests_container }}"
         detach: false
         volumes:
-          - "{{ docker_result_dir }}:/var/ctr-tools-test/results"
+          - "{{ docker_result_dir }}:{{ in_container_result_dir }}"
       when: docker_installed.rc == 0
       tags:
         - docker
@@ -84,7 +86,7 @@
         image: "{{ tests_container }}"
         detach: false
         volumes:
-          - "{{ podman_result_dir }}:/var/ctr-tools-test/results"
+          - "{{ podman_result_dir }}:{{ in_container_result_dir }}"
       when: podman_installed.rc == 0
       tags:
         - podman
