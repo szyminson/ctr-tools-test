@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.3.1](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.3.1) - 2023-05-29
+
+- [`9fc1de5`](https://github.com/szyminson/ctr-tools-test/commit/9fc1de5975d6f64b1c7095efaf412a3267ee9b59) refactor(playbook): more variables less duplicated strings
+- [`1a9d330`](https://github.com/szyminson/ctr-tools-test/commit/1a9d330a626b0985f0d661e6e4217ebbfbd533f4) fix: use fixed tag of container in playbook
+- [`12faa0b`](https://github.com/szyminson/ctr-tools-test/commit/12faa0b0b34079cc1c3bc8953177ef8e123ed3ed) fix: remove test command from playbook
+- [`40d0201`](https://github.com/szyminson/ctr-tools-test/commit/40d0201b0a819d5ce22b4f4540ad1a7589118232) chore: uplift config file
+- [`86ab9ce`](https://github.com/szyminson/ctr-tools-test/commit/86ab9ce590e3ebf724c9115dcb3e6c843033a260) refactor: use variables in playbook
+
 ## [v0.3.0](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.3.0) - 2023-05-29
 
 - [`07e9728`](https://github.com/szyminson/ctr-tools-test/commit/07e9728e3ef5d6d74ae9e51fe9fe204dbc031b2d) feat: Run tests automatically on container start
