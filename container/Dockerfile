@@ -16,7 +16,7 @@ RUN mkdir -p /var/ctr-tools-test/results
 COPY ./run-tests.sh /var/ctr-tools-test
 
 # Test suite
-RUN mkdir -p /var/lib/phoronix-test-suite/test-suites/local/containerization-tools-testing
+RUN mkdir -p /var/lib/phoronix-test-suite/test-suites/local/ctr-tools-test
 COPY ./suite-definition.xml /var/lib/phoronix-test-suite/test-suites/local/ctr-tools-test
 
 
