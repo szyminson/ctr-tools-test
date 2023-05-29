@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.3.3](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.3.3) - 2023-05-29
+
+- [`c712823`](https://github.com/szyminson/ctr-tools-test/commit/c712823cec43d4a675a25a9946c5dd67c848c46a) fix: run test suite instead of test
+
 ## [v0.3.2](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.3.2) - 2023-05-29
 
 - [`2261801`](https://github.com/szyminson/ctr-tools-test/commit/22618018804640f437d577fce6de4d8daa855054) fix(container): typo in cmd
