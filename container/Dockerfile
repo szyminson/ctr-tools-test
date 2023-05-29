@@ -21,4 +21,4 @@ COPY ./suite-definition.xml /var/lib/phoronix-test-suite/test-suites/local/ctr-t
 
 
 ENTRYPOINT [ "/bin/bash", "-c" ]
-CMD [ "/var/ctr-tools/test/run-tests.sh" ]
+CMD [ "/var/ctr-tools-test/run-tests.sh" ]
