@@ -40,3 +40,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - [`ff03188`](https://github.com/szyminson/ctr-tools-test/commit/ff03188a81707f2357be539ec69f143f7ec6fce7) feat: include run-tests script in the image
 - [`ef7a1e4`](https://github.com/szyminson/ctr-tools-test/commit/ef7a1e4e9b53f21361d4d123ded3a2748f680557) chore: add readme
+
+## [v0.1.0](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.1.0) - 2023-05-28
+
+- [`9477f73`](https://github.com/szyminson/ctr-tools-test/commit/9477f7350ddfe759fd72007523721f21a889496e) ci:  docker publish action
+- [`3f7afd9`](https://github.com/szyminson/ctr-tools-test/commit/3f7afd9811fdfeec6bb133eec640f28b128dafcf) chore: initial commit
