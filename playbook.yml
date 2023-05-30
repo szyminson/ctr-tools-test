@@ -38,6 +38,8 @@
         name: ctr-tools-test
         image: "{{ tests_container }}"
         detach: false
+        interactive: true
+        auto_remove: true
         volumes:
           - "{{ docker_result_dir }}:{{ in_container_result_dir }}"
       when: docker_installed.rc == 0
@@ -85,6 +87,8 @@
         name: ctr-tools-test
         image: "{{ tests_container }}"
         detach: false
+        interactive: true
+        auto_remove: true
         volumes:
           - "{{ podman_result_dir }}:{{ in_container_result_dir }}"
       when: podman_installed.rc == 0
