@@ -6,7 +6,7 @@ RUN apt-get update & apt-get upgrade -y
 RUN apt-get install -y pkg-config
 
 # Install tests
-RUN /phoronix-test-suite/phoronix-test-suite install pts/sysbench pts/sockperf
+RUN /phoronix-test-suite/phoronix-test-suite install pts/sysbench pts/sockperf pts/apache pts/mysqlslap
 
 # Phoronix config file
 COPY ./phoronix-test-suite.xml /etc

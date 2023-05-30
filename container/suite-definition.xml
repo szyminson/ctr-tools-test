@@ -2,10 +2,10 @@
 <!--Phoronix Test Suite v10.8.3-->
 <PhoronixTestSuite>
   <SuiteInformation>
-    <Title>Containerization tools testing</Title>
+    <Title>ctr-tools-test</Title>
     <Version>1.0.0</Version>
-    <TestType>System</TestType>
-    <Description>Test suite for analysis and comparison of containerization tools</Description>
+    <TestType>Other</TestType>
+    <Description>Container engine performance comparison</Description>
     <Maintainer>szyminson</Maintainer>
   </SuiteInformation>
   <Execute>
@@ -32,5 +32,15 @@
     <Test>pts/sockperf</Test>
     <Arguments>throughput</Arguments>
     <Description>Test: Throughput</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/apache</Test>
+    <Arguments>-c 100</Arguments>
+    <Description>Concurrent Requests: 100</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/mysqlslap</Test>
+    <Arguments>--concurrency=2048</Arguments>
+    <Description>Clients: 2048</Description>
   </Execute>
 </PhoronixTestSuite>
