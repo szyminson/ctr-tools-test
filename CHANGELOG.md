@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.4.0](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.4.0) - 2023-05-30
+
+- [`d804f39`](https://github.com/szyminson/ctr-tools-test/commit/d804f3984269c11dace534929d38e29b3008a9e6) feat: add apache and mysqlslap tests
+- [`f8e3153`](https://github.com/szyminson/ctr-tools-test/commit/f8e3153a35aa038c68713295320a8766917da9ff) docs: readme update
+- [`1b07b4c`](https://github.com/szyminson/ctr-tools-test/commit/1b07b4cfe313c48a8701856575ff0e5805660ee1) chore: example inventory file
+- [`6db7b1d`](https://github.com/szyminson/ctr-tools-test/commit/6db7b1d115af4334c856de8532e950f3d73b2ce6) ci(uplift): uplifted for version
+
 ## [v0.3.5](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.3.5) - 2023-05-30
 
 - [`31f16b3`](https://github.com/szyminson/ctr-tools-test/commit/31f16b38b829e92ba9a1aa51d6e86beeff2605f2) fix(playbook): container launch options
