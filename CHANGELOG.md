@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.3.5](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.3.5) - 2023-05-30
+
+- [`31f16b3`](https://github.com/szyminson/ctr-tools-test/commit/31f16b38b829e92ba9a1aa51d6e86beeff2605f2) fix(playbook): container launch options
+
 ## [v0.3.4](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.3.4) - 2023-05-29
 
 - [`db0fbc3`](https://github.com/szyminson/ctr-tools-test/commit/db0fbc366f66cd3293bbfa37424227ad45e9ac8d) fix: test suite dir name
