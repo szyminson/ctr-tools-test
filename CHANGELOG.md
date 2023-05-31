@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v0.5.0](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.5.0) - 2023-05-31
+
+- [`5dc4095`](https://github.com/szyminson/ctr-tools-test/commit/5dc4095ee7d3a79205bdff24410b2f3758956680) refactor: typo
+- [`1ef8555`](https://github.com/szyminson/ctr-tools-test/commit/1ef855592900190dbd10c9c8160f9ced04662d39) feat: tmux with logging and separate tasks
+
 ## [v0.4.0](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.4.0) - 2023-05-30
 
 - [`d804f39`](https://github.com/szyminson/ctr-tools-test/commit/d804f3984269c11dace534929d38e29b3008a9e6) feat: add apache and mysqlslap tests
