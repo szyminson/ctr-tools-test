@@ -90,13 +90,13 @@
       when: tests_running.rc == 0
       tags: abort
 
-    - name: Make sure docker container is stopped
+    - name: Make sure Docker container is stopped
       community.docker.docker_container:
         name: "{{ container_name }}"
         state: absent
       tags: abort
 
-    - name: Make sure podman container is stopped
+    - name: Make sure Podman container is stopped
       containers.podman.podman_container:
         name: "{{ container_name }}"
         state: absent
