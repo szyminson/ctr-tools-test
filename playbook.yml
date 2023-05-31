@@ -3,108 +3,103 @@
   vars:
     - tests_container: ghcr.io/szyminson/ctr-tools-test:v0.4.0
     - in_container_result_dir: /var/ctr-tools-test/results
-    - docker_result_dir: /tmp/docker-results
-    - podman_result_dir: /tmp/podman-results
+    - result_base_dir: /tmp/ctr-tools-test
+    - container_name: ctr-tools-test
+    - ctr_tools:
+      - docker
+      - podman
   tasks:
-    - name: Check if Docker is installed
-      ansible.builtin.command: docker --version
-      register: docker_installed
-      ignore_errors: true
-      tags:
-        - docker
-        - tests
-        - results
+    - name: Make sure tmux is installed
+      become: true
+      apt:
+        pkg: tmux
+        state: present
 
-    - name: Create Docker result dir
+    - name: Check if all necessary container engines are installed
+      ansible.builtin.command: "{{ item }} --version"
+      loop: "{{ ctr_tools }}"
+      tags: tests
+
+    - name: Create result directories
       ansible.builtin.file:
-        path: "{{ docker_result_dir }}"
+        path: "{{ result_base_dir }}/{{ item }}"
         state: directory
-      when: docker_installed.rc == 0
-      tags:
-        - docker
-        - tests
+      loop: "{{ ctr_tools }}"
+      tags: tests
 
     - name: Docker pull test container image
       community.docker.docker_image:
         name: "{{ tests_container }}"
         source: pull
-      when: docker_installed.rc == 0
-      tags:
-        - docker
-        - tests
+      tags: tests
   
-    - name: Run Docker test
-      community.docker.docker_container:
-        name: ctr-tools-test
-        image: "{{ tests_container }}"
-        detach: false
-        interactive: true
-        auto_remove: true
-        volumes:
-          - "{{ docker_result_dir }}:{{ in_container_result_dir }}"
-      when: docker_installed.rc == 0
-      tags:
-        - docker
-        - tests
-    
-    - name: Get Docker results
-      ansible.builtin.fetch:
-        src: "{{ docker_result_dir }}/latest.json"
-        dest: ./results
-      when: docker_installed.rc == 0
-      tags:
-        - docker
-        - results
-
-    - name: Check if Podman is installed
-      ansible.builtin.command: podman --version
-      register: podman_installed
-      ignore_errors: true
-      tags:
-        - podman
-        - tests
-        - results
-
-    - name: Create Podman result dir
-      ansible.builtin.file:
-        path: "{{ podman_result_dir }}"
-        state: directory
-      when: podman_installed.rc == 0
-      tags:
-        - podman
-        - tests
-
     - name: Podman pull test container image
       containers.podman.podman_image:
         name: "{{ tests_container }}"
-      when: podman_installed.rc == 0
-      tags:
-        - podman
-        - tests
+      tags: tests
 
-    - name: Run Podman test
-      containers.podman.podman_container:
-        name: ctr-tools-test
-        image: "{{ tests_container }}"
-        detach: false
-        interactive: true
-        auto_remove: true
-        volumes:
-          - "{{ podman_result_dir }}:{{ in_container_result_dir }}"
-      when: podman_installed.rc == 0
+    - name: Upload test run script
+      ansible.builtin.copy:
+        src: run-containers.sh
+        dest: "{{ result_base_dir }}/"
+        mode: '0755'
+      tags: tests
+
+    - name: Check if tests are running
+      ansible.builtin.command:
+        cmd: "tmux has-session -t {{ container_name }}"
+      register: tests_running
+      failed_when: tests_running.rc >= 2
       tags:
-        - podman
         - tests
-    
-    - name: Get Podman results
-      ansible.builtin.fetch:
-        src: "{{ podman_result_dir }}/latest.json"
-        dest: ./results
-      when: podman_installed.rc == 0
-      tags:
-        - podman
         - results
+        - abort
 
-  
+    - name: Run tests if not running
+      ansible.builtin.command:
+        argv:
+          - "tmux"
+          - "new"
+          - "-ds{{ container_name }}"
+          - "{{ result_base_dir }}/run-containers.sh"
+          - "{{ tests_container }}"
+          - "{{ container_name }}"
+          - "{{ in_container_result_dir }}"
+          - "{{ result_base_dir }}"
+      when: tests_running.rc == 1
+      tags: tests
+
+    - name: Get results
+      ansible.builtin.fetch:
+        src: "{{ result_base_dir }}/{{ item }}/latest.json"
+        dest: ./results
+      loop: "{{ ctr_tools }}"
+      when: tests_running.rc == 1
+      tags: results
+
+    - name: Fetch current session logs
+      ansible.builtin.fetch:
+        src: "{{ result_base_dir }}/tmux.log"
+        dest: ./results
+      when: tests_running.rc == 0
+      tags: results
+
+    - name: Kill tmux session
+      ansible.builtin.command:
+        cmd: "tmux kill-session -t {{ container_name }}"
+      when: tests_running.rc == 0
+      tags: abort
+
+    - name: Make sure docker container is stopped
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        state: absent
+      tags: abort
+
+    - name: Make sure podman container is stopped
+      containers.podman.podman_container:
+        name: "{{ container_name }}"
+        state: absent
+      tags: abort
 
 
