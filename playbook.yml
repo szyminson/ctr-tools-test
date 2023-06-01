@@ -14,6 +14,10 @@
       apt:
         pkg: tmux
         state: present
+      tags:
+        - tests
+        - results
+        - abort
 
     - name: Check if all necessary container engines are installed
       ansible.builtin.command: "{{ item }} --version"
