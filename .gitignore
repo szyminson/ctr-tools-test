@@ -1,4 +1,5 @@
 .vscode
 results
+processed
 inv.yml
-venv
+.venv

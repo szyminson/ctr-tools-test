@@ -81,11 +81,10 @@
       when: tests_running.rc == 1
       tags: results
 
-    - name: Fetch current session logs
+    - name: Fetch session logs
       ansible.builtin.fetch:
         src: "{{ result_base_dir }}/tmux.log"
         dest: ./results
-      when: tests_running.rc == 0
       tags: results
 
     - name: Kill tmux session
