@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [v1.0.0](https://github.com/szyminson/ctr-tools-test/releases/tag/v1.0.0) - 2023-06-10
+
+- [`409e199`](https://github.com/szyminson/ctr-tools-test/commit/409e199b5deec5df4efc38de7344bb0c9cd36295) feat!: final touches, chart and table rendering
+- [`618a8b9`](https://github.com/szyminson/ctr-tools-test/commit/618a8b94145bf9f7acb119b684d883d76b9865a9) chore: requirement.txt
+- [`757c6cb`](https://github.com/szyminson/ctr-tools-test/commit/757c6cb000f431f53d8be4e64e18aded206a1c58) feat: result processing script with example plots
+- [`7fb728b`](https://github.com/szyminson/ctr-tools-test/commit/7fb728b3624ef160336b3d822125692ccc56e0ea) feat: result processing
+- [`c39e973`](https://github.com/szyminson/ctr-tools-test/commit/c39e97395d5a5fd17707da8bb309bdf4d497d471) fix(playbook): add missing tags to tmux install job
+- [`279e5ec`](https://github.com/szyminson/ctr-tools-test/commit/279e5ecc4f391f35182eaad75480ea84b998d275) ci(uplift): uplifted for version v0.5.0
+- [`5dc4095`](https://github.com/szyminson/ctr-tools-test/commit/5dc4095ee7d3a79205bdff24410b2f3758956680) refactor: typo
+- [`1ef8555`](https://github.com/szyminson/ctr-tools-test/commit/1ef855592900190dbd10c9c8160f9ced04662d39) feat: tmux with logging and separate tasks
+- [`7c2252e`](https://github.com/szyminson/ctr-tools-test/commit/7c2252ee9c4409361148c3f8ff4b53fa96e2104d) ci(uplift): uplifted for version v0.4.0
+- [`d804f39`](https://github.com/szyminson/ctr-tools-test/commit/d804f3984269c11dace534929d38e29b3008a9e6) feat: add apache and mysqlslap tests
+- [`f8e3153`](https://github.com/szyminson/ctr-tools-test/commit/f8e3153a35aa038c68713295320a8766917da9ff) docs: readme update
+- [`1b07b4c`](https://github.com/szyminson/ctr-tools-test/commit/1b07b4cfe313c48a8701856575ff0e5805660ee1) chore: example inventory file
+- [`6db7b1d`](https://github.com/szyminson/ctr-tools-test/commit/6db7b1d115af4334c856de8532e950f3d73b2ce6) ci(uplift): uplifted for version
+
 ## [v0.5.0](https://github.com/szyminson/ctr-tools-test/releases/tag/v0.5.0) - 2023-05-31
 
 - [`5dc4095`](https://github.com/szyminson/ctr-tools-test/commit/5dc4095ee7d3a79205bdff24410b2f3758956680) refactor: typo

@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    - tests_container: ghcr.io/szyminson/ctr-tools-test:v0.5.0
+    - tests_container: ghcr.io/szyminson/ctr-tools-test:v1.0.0
     - in_container_result_dir: /var/ctr-tools-test/results
     - result_base_dir: /tmp/ctr-tools-test
     - container_name: ctr-tools-test
